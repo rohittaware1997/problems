@@ -21,10 +21,10 @@ public class Sort {
 		/*  Sorting functions
 		 * */
 		
-		bubbleSort(input);
-		
+		//bubbleSort(input);
+		input = insertionSort(input);
 		System.out.println("Numbers after sorting");
-		for(int i = 0; i< num; i++) {
+		for(int i = 0; i < input.size(); i++) {
 			System.out.println(input.get(i));
 		}
 		
@@ -40,6 +40,27 @@ public class Sort {
 				}
 			}
 		}
+	}
+
+	private static ArrayList<Integer> insertionSort(ArrayList<Integer> nums) {
+		ArrayList<Integer> sortedArray = new ArrayList<Integer>();
+		
+		sortedArray.add(nums.get(0));
+		for (int i = 1; i < nums.size(); i++) {
+			boolean flag = false;
+			for (int j = 0; j < sortedArray.size(); j++) {
+				if (sortedArray.get(j) > nums.get(i)) {
+					sortedArray.add(j, nums.get(i));
+					flag = true;
+					break;
+				}
+			}
+			if (!flag) {
+				sortedArray.add(nums.get(i));
+			}
+		}
+		
+		return sortedArray;
 	}
 }
 
